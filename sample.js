@@ -3,12 +3,12 @@ var fetchog     = require('./index');
 fetchog.fetch('http://www.yahoo.com', function(err, meta) {
   if (err) {
     console.log(err);
-    return;
+  } else {
+    console.log('title: ', meta.title);
+    console.log('description: ', meta.description);
+    console.log('image: ', meta.image);
+    console.log('url: ', meta.url);
   }
-  console.log('title: ', meta.title);
-  console.log('description: ', meta.description);
-  console.log('image: ', meta.image);
-  console.log('url: ', meta.url);
 });
 
 /* output

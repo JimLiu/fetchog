@@ -66,7 +66,6 @@ Client.fetch = function(url, options, callback) {
       callback(null, meta);
     }
   }).on('timeout', function(ms) {
-    console.log('timeout', ms);
     callback('Timeout');
   });
 };
