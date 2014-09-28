@@ -1,6 +1,7 @@
-var cheerio = require('cheerio'),
-    rest = require('restler'),
-    URI = require('uri-js'),
+var _             = require('lodash'),
+    cheerio       = require('cheerio'),
+    rest          = require('restler'),
+    URI           = require('uri-js'),
     Client = {};
 
 var parseMeta = function(url, body) {
@@ -48,16 +49,25 @@ var parseMeta = function(url, body) {
   };
 };
 
-Client.fetch = function(url, callback) {
-  rest.get(url, {
-    timeout: 30000
-  }).on('complete', function(result) {
+Client.fetch = function(url, options, callback) {
+  var _options = {
+    timeout: 20000
+  };
+  if (typeof options === 'function') {
+    callback = options;
+  } else if (typeof options === 'object') {
+    _.merge(_options, options);
+  }
+  rest.get(url, _options).on('complete', function(result) {
     if (result instanceof Error) {
       callback(result);
     } else {
       var meta = parseMeta(url, result);
       callback(null, meta);
     }
+  }).on('timeout', function(ms) {
+    console.log('timeout', ms);
+    callback('Timeout');
   });
 };
 

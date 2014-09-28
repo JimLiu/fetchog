@@ -1,6 +1,10 @@
 var fetchog     = require('./index');
 
 fetchog.fetch('http://www.yahoo.com', function(err, meta) {
+  if (err) {
+    console.log(err);
+    return;
+  }
   console.log('title: ', meta.title);
   console.log('description: ', meta.description);
   console.log('image: ', meta.image);
