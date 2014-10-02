@@ -1,7 +1,7 @@
 
 ## Fetchog
 
-Fetchog is an npm package fetching a given URL, returns its title, description, image.
+Fetchog is an npm package that fetches a given URL and returns its title, description and image.
 
 ## Usage
 
@@ -31,7 +31,7 @@ image:  https://s.yimg.com/dh/ap/default/130909/y_200_a.png
 url:  https://www.yahoo.com/
 ```
 
-### Resposne Data
+### Response Data
 
 * `title` Page title, if there is a `og:title` meta tag, it will override the `<title>` tag value.
 * `description` Page description, if there is a `og:description` meta tag, it will override the `<meta name='description' content='xxx'>` tag value.
